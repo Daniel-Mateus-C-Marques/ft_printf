@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 21:40:49 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/02 21:46:12 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/04 17:13:20 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	parse(va_list args, const char *format)
 				len += ft_putchar(va_arg(args, int));
 			else if (format[i] == 'd' || format[i] == 'i')
 				len += ft_putnbr(va_arg(args, int));
+			else if (format[i] == 'u')
+				len += ft_unsigned(va_arg(args, unsigned int));
 			else if (format[i] == '%')
 				len += ft_putchar('%');
 			i++;
