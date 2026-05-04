@@ -6,13 +6,13 @@
 #    By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/01 22:07:53 by danicamp          #+#    #+#              #
-#    Updated: 2026/05/02 15:57:32 by danicamp         ###   ########.fr        #
+#    Updated: 2026/05/04 18:21:49 by danicamp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c ft_printf_utils.c 
+SRCS = ft_printf.c ft_printf_utils.c ft_print_hex.c
 
 OBJS = $(SRCS:.c=.o)
 

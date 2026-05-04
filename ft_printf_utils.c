@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 22:08:52 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/04 17:37:22 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/04 18:20:40 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_putnbr(int n)
 	}
 	if (nb > 9)
 		len += ft_putnbr(nb / 10);
-	nb %= 10;	
+	nb %= 10;
 	len++;
 	number = nb + '0';
 	write(1, &number, 1);
@@ -66,5 +66,15 @@ int	ft_unsigned(unsigned int n)
 	n %= 10;
 	c = n + '0';
 	write (1, &c, 1);
+	return (len);
+}
+
+int ft_pointer(unsigned long n, const char *base)
+{
+	int	len;
+
+	write(1, "0x", 2);
+	len = 2;
+	len += ft_print_hex(n, base);
 	return (len);
 }
