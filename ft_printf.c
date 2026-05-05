@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 21:40:49 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/04 18:11:59 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/05 13:00:18 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ static int	parse(va_list args, const char *format)
 				len += ft_unsigned(va_arg(args, unsigned int));
 			else if (format[i] == 'p')
 				len += ft_pointer(va_arg(args, unsigned long), "0123456789abcdef");
+			else if (format[i] == 'x')
+				len += ft_print_hex(va_arg(args, int), "0123456789abcdef");
+			else if (format[i] == 'X')
+				len += ft_print_hex(va_arg(args, int), "0123456789ABCDEF");
 			else if (format[i] == '%')
 				len += ft_putchar('%');
 			i++;

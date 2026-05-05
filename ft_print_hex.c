@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 17:52:27 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/04 18:29:04 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/05 12:58:57 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,30 @@
 
 int	ft_print_hex(unsigned int n, const char *base)
 {
-	int     len;
+	int	len;
+	int	index_base;
 
 	len = 0;
+	index_base = 0;
 	if (n > 16)
-		len += ft_print_hex(n / 16, base);
-	n %= 16;
-	write(1, &base[n], 1);
-	return (len++);
+		len += ft_pointer_hex(n / 16, base);
+	index_base = n % 16;
+	write(1, &base[index_base], 1);
+	len++;
+	return (len);
 }
 
 int	ft_pointer_hex(unsigned long n, const char *base)
 {
-	int     len;
+	int	len;
+	int	index_base;
 
 	len = 0;
+	index_base = 0;
 	if (n > 16)
 		len += ft_pointer_hex(n / 16, base);
-	write(1, &base[n], 1);
-	return (len++);
+	index_base = n % 16;
+	write(1, &base[index_base], 1);
+	len++;
+	return (len);
 }
