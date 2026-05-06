@@ -1,3 +1,5 @@
+This project has been created as part of the 42 curriculum by danicamp
+
 # ft_printf
 
 ## Description
@@ -39,7 +41,7 @@ Include the header file in your code:
 Compile your program with:
 
 ```bash
-gcc main.c libftprintf.a
+cc -Werror -Wall -Wextra main.c libftprintf.a
 ```
 
 ---
@@ -62,6 +64,5 @@ gcc main.c libftprintf.a
 * C Standard Library documentation (`printf`)
 * `stdarg.h` — variadic functions
 * Base conversion concepts (decimal ↔ hexadecimal)
-* Memory and string handling in C
 * AI tools were used as guidance to help understand concepts.
 
