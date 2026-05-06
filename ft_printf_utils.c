@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 22:08:52 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/05 21:31:11 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:34:08 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_putstr(const char *display)
 	i = 0;
 	if (!display)
 	{
-		write(1, "NULL", 4);
-		return (4);
+		write(1, "(null)", 6);
+		return (6);
 	}
 	while (display[i])
 	{

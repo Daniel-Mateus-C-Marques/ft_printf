@@ -6,11 +6,35 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 21:40:49 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/05 13:00:18 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/06 20:02:07 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	get_condition(va_list args, const char *format, int i)
+{
+	int	len;
+
+	len = 0;
+	if (format[i] == 's')
+		len += ft_putstr(va_arg(args, const char *));
+	else if (format[i] == 'c')
+		len += ft_putchar(va_arg(args, int));
+	else if (format[i] == 'd' || format[i] == 'i')
+		len += ft_putnbr(va_arg(args, int));
+	else if (format[i] == 'u')
+		len += ft_unsigned(va_arg(args, unsigned int));
+	else if (format[i] == 'p')
+		len += ft_pointer(va_arg(args, unsigned long), HEX_LOWER);
+	else if (format[i] == 'x')
+		len += ft_print_hex(va_arg(args, int), HEX_LOWER);
+	else if (format[i] == 'X')
+		len += ft_print_hex(va_arg(args, int), HEX_UPPER);
+	else if (format[i] == '%')
+		len += ft_putchar('%');
+	return (len);
+}
 
 static int	parse(va_list args, const char *format)
 {
@@ -24,22 +48,7 @@ static int	parse(va_list args, const char *format)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 's')
-				len += ft_putstr(va_arg(args, const char *));
-			else if (format[i] == 'c')
-				len += ft_putchar(va_arg(args, int));
-			else if (format[i] == 'd' || format[i] == 'i')
-				len += ft_putnbr(va_arg(args, int));
-			else if (format[i] == 'u')
-				len += ft_unsigned(va_arg(args, unsigned int));
-			else if (format[i] == 'p')
-				len += ft_pointer(va_arg(args, unsigned long), "0123456789abcdef");
-			else if (format[i] == 'x')
-				len += ft_print_hex(va_arg(args, int), "0123456789abcdef");
-			else if (format[i] == 'X')
-				len += ft_print_hex(va_arg(args, int), "0123456789ABCDEF");
-			else if (format[i] == '%')
-				len += ft_putchar('%');
+			len += get_condition(args, format, i);
 			i++;
 		}
 		else
@@ -54,7 +63,7 @@ static int	parse(va_list args, const char *format)
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int		len;	
+	int		len;
 
 	va_start(args, format);
 	len = 0;
